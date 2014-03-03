@@ -16,6 +16,29 @@ For browser:
 ```
 
 ## Api
+
+### bind
+
+Same as ```Function.prototype.bind```, but for functions not methods
+
+Before:
+```js
+    function showMessage(msg) {
+        console.log(msg);
+    }
+    
+    setTimeout(showMessage.bind(null, 'hello', 0));
+```
+
+After:
+```js
+    function showMessage(msg) {
+        console.log(msg);
+    }
+    
+    setTimeout(Util.bind(showMessage, 'hello'), 0);
+```
+
 ### exec
 Check is parameter is function, if it's - executes it with given parameters
 
@@ -84,4 +107,43 @@ var ONE_SECOND  = 1000,
 Util.asyncCall([func1, func2], function(str1, str2) {
     console.log(str1, str2);
 });
+```
+
+### render
+simple template engine
+
+```js
+    var msg = Util.render('hello {{ word }}', {
+        word: 'world'
+    });
+    
+    console.log(msg);
+    // hello world
+```
+
+
+```js
+    /* template engine could be any you want */
+    var msg;
+    msg = Util.ownRender('hello <%word%>', { word: 'world' }, ['<%', '%>']);
+    console.log(msg);
+    // hello world
+    
+    /* if you want spaces */
+    var notEscape = true;
+    msg = Util.ownRender('hello <% word %>', { word: 'world' }, ['\\s*<%', '\\s*%>'], notEscape);
+    console.log(msg);
+    // hello world
+    
+    /* if you want functions */
+    var sum = function(x, y) {
+        return x + y
+    };
+    
+    msg = Util.render('x = {{ result }}', {
+        result: Util.bind(sum, 5, 3)
+    });
+    
+    console.log(msg);
+    // x = 8
 ```
