@@ -33,6 +33,10 @@ function(callback, p1, p2, pN) {
     Util.exec(callback, p1, p2, pN);
 }
 ```
+or just
+```js
+    Util.retExec(callback, p1, p2, pN);
+```
 
 ### asyncCall
 if a you need a couple async operation do same work, and then call callback, this function for you.
