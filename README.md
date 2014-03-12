@@ -109,6 +109,27 @@ Util.asyncCall([func1, func2], function(str1, str2) {
 });
 ```
 
+### loadOnLoad
+executes functions one-by-one
+
+```js
+    function one(callback){
+        setTimeout(function() {
+            console.log(1)
+            Util.exec(callback)
+        }, 1000);
+    }
+
+    function two(callback) {
+        console.log(2);
+        Util.exec(callback)
+    }
+
+    Util.loadOnLoad([one, two]);
+```
+
+
+
 ### render
 simple template engine
 
