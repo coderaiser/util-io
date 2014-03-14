@@ -61,6 +61,35 @@ or just
     Util.retExec(callback, p1, p2, pN);
 ```
 
+### ifExec
+Conditional execution one of two functions
+
+Preconditions:
+```js
+    function one() {
+        console.log(1);
+    }
+    
+    function two(callback) {
+        setTimeout(callback, 1000);
+    }
+```
+
+
+Before:
+```js
+    if (2 > 3)
+        one();
+    else
+        two(one);
+    
+```
+
+After:
+```js
+    Util.ifExec(2 > 3, one, two);
+```
+
 ### asyncCall
 if a you need a couple async operation do same work, and then call callback, this function for you.
 
