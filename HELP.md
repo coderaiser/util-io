@@ -61,7 +61,7 @@ or just
     Util.retExec(callback, p1, p2, pN);
 ```
 
-### ifExec
+### exec.if
 Conditional execution one of two functions
 
 Preconditions:
@@ -87,25 +87,25 @@ Before:
 
 After:
 ```js
-    Util.ifExec(2 > 3, one, two);
+    exec.if(2 > 3, one, two);
 ```
 
-### asyncCall
+### exec.parallel
 if a you need a couple async operation do same work, and then call callback, this function for you.
 
 **Node.js example**.
 ```js
 var fs = require('fs');
 
-Util.asyncCall([
+Util.exec.parallel([
     function(callback) {
         fs.readFile('file1', function(error, data) {
-            Util.exec(callback, error, data);
+            callback(error, data);
         });
     },
     function(callback) {
         fs.readFile('file2',  function(error, data) {
-            Util.exec(callback, error, data);
+            callback(error, data);
         });
     }
 ], function(file1, file2) {
@@ -126,14 +126,14 @@ var ONE_SECOND  = 1000,
     func        = function(time, str, callback) {
         setTimeout(function() {
             console.log(str);
-            Util.exec(callback, str);
+            callback();
         }, time);
     },
     
     func1       = func.bind(null, TWO_SECONDS, 'first'),
     func2       = func.bind(null, ONE_SECOND, 'second');
 
-Util.asyncCall([func1, func2], function(str1, str2) {
+Util.exec.parallel([func1, func2], function(str1, str2) {
     console.log(str1, str2);
 });
 ```
@@ -145,19 +145,17 @@ executes functions one-by-one
     function one(callback){
         setTimeout(function() {
             console.log(1)
-            Util.exec(callback)
+            callback();
         }, 1000);
     }
 
     function two(callback) {
         console.log(2);
-        Util.exec(callback)
+        callback();
     }
 
-    Util.loadOnLoad([one, two]);
+    Util.exec.series([one, two]);
 ```
-
-
 
 ### render
 simple template engine
@@ -170,7 +168,6 @@ simple template engine
     console.log(msg);
     // hello world
 ```
-
 
 ```js
     /* template engine could be any you want */
