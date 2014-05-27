@@ -1,3 +1,11 @@
+---
+layout          : default
+title           : Util.io
+tagLine         : Utilites for vanila js
+repoName        : coderaiser/utio.io/edit/master/HELP.md
+repoSource      : coderaiser/utio.io
+---
+
 # Util.io [![NPM version][NPMIMGURL]][NPMURL]
 [NPMIMGURL]:                https://badge.fury.io/js/util.io.png
 [NPM_INFO_IMG]:             https://nodei.co/npm/util.io.png?downloads=true&&stars
@@ -16,28 +24,6 @@ For browser:
 ```
 
 ## Api
-
-### bind
-
-Same as ```Function.prototype.bind```, but for functions not methods
-
-Before:
-```js
-    function showMessage(msg) {
-        console.log(msg);
-    }
-    
-    setTimeout(showMessage.bind(null, 'hello', 0));
-```
-
-After:
-```js
-    function showMessage(msg) {
-        console.log(msg);
-    }
-    
-    setTimeout(Util.bind(showMessage, 'hello'), 0);
-```
 
 ### exec
 Check is parameter is function, if it's - executes it with given parameters
@@ -188,7 +174,7 @@ simple template engine
     };
     
     msg = Util.render('x = {{ result }}', {
-        result: Util.bind(sum, 5, 3)
+        result: sum.bind(null, 5, 3)
     });
     
     console.log(msg);
