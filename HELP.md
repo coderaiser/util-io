@@ -95,14 +95,10 @@ var fs = require('fs');
 
 Util.exec.parallel([
     function(callback) {
-        fs.readFile('file1', function(error, data) {
-            callback(error, data);
-        });
+        fs.readFile('file1', callback);
     },
     function(callback) {
-        fs.readFile('file2',  function(error, data) {
-            callback(error, data);
-        });
+        fs.readFile('file2',  callback);
     }
 ], function(error, data1, data2) {
     if (error)
