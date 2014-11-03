@@ -1,0 +1,5 @@
+2014.11.3, v1.5.1
+
+feature:
+- (util) checkArgs speed up rm for
+
