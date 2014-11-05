@@ -1,3 +1,9 @@
+2014.11.5, v1.6.1
+
+feature:
+- (util) getShortDate: if day <= 9 add 0
+
+
 2014.11.3, v1.6.0
 
 feature:
