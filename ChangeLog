@@ -1,3 +1,9 @@
+2014.11.13, v1.6.2
+
+feature:
+- (util) check: add indexOf undefined
+
+
 2014.11.5, v1.6.1
 
 feature:
