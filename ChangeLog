@@ -1,3 +1,9 @@
+2014.11.17, v1.6.3
+
+fix:
+- (util) check: add check for chaining
+
+
 2014.11.13, v1.6.2
 
 feature:
