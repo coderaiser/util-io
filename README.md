@@ -9,4 +9,4 @@ Deprecated. Use:
 - [itype](https://github.com/coderaiser/itype "iType")
 - [try-catch](https://github.com/coderaiser/try-catch "Try Catch")
 
-[Util-io](http://coderaiser.github.io/util-io "Util-io") - utilites for vanila js. Consist of nice set of functions that works in node and browser.
+Util-io - utilites for vanila js. Consist of nice set of functions that works in node and browser.
